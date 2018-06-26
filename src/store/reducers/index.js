@@ -6,6 +6,10 @@ export const reducer = (state = [], action) => {
       return addToCart(state, action.payload)
     case REMOVE_FROM_CART:
       return removeFromCart(state, action.payload)
+    case CLEAR_CART:
+      return []
+    default:
+      return state
   }
 }
 
