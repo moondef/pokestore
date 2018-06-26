@@ -16,8 +16,9 @@ export const reducer = (state = [], action) => {
 // utils for ADD_TO_CART
 const addToCart = (cart, pokemon) => {
   if (inCart(cart, pokemon)) {
-    cart.find(item => item.name === pokemon.name).count += 1;
+    cart.find(item => item.name === pokemon.name).count += 1
   } else {
+    pokemon['count'] = 0
     cart.push(pokemon)
   }
 
