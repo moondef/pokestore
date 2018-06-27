@@ -2,10 +2,8 @@ import React, { Component, Fragment } from 'react'
 import styled from 'styled-components'
 import { connect } from 'react-redux';
 
-import { Header, Container, Cart, Layout, Button } from '../../ui'
+import { Header, Container, Cart, Layout, Button, Total } from '../../ui'
 import { REMOVE_FROM_CART, CLEAR_CART } from '../../store/actions'
-
-import { Total } from '../total'
 
 class CartPage extends Component {
   state = { data: [] }
