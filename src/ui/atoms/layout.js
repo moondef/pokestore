@@ -29,7 +29,6 @@ Layout.propTypes = {
 Layout.defaultProps = {
   wrap: 'nowrap',
   padding: 0,
-  gap: 0,
   width: 0,
   justify: undefined,
   align: 'stretch'
