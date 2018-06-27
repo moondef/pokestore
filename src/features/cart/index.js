@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import styled from 'styled-components'
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 
 import { Header, Container, Cart, Layout, Button, Total } from '../../ui'
 import { REMOVE_FROM_CART, CLEAR_CART } from '../../store/actions'
