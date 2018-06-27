@@ -17,6 +17,8 @@ export const Card = ({ id, name, price, image, type, species, abilities }) => (
     <br />
     <span>Species: {species}</span>
     <br />
+
+
     <div>
       Abilities: <br /> <br /> {abilities.map((e, i) => <Type key={`ability-${e}-${i}`}>{e.naming}</Type>)}
     </div>
@@ -28,6 +30,7 @@ export const Card = ({ id, name, price, image, type, species, abilities }) => (
 )
 
 const CardWrapper = styled(Layout)`
+  
   font-size: 0.9rem;
   text-align: center;
   border-radius: 5px;
@@ -48,6 +51,8 @@ const Image = styled.img`
 `
 
 const Type = styled.span`
+  display: flex;
+  width: 100%;
   margin: 0.5rem;
   border-radius: 3px;
   border: 1px solid #0000FF;

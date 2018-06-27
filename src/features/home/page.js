@@ -1,11 +1,38 @@
-import React from 'react'
-import { Header, Button, Card } from '../../ui'
+import React, { Fragment, Component } from 'react'
+import styled from 'styled-components'
+import { Header, Container, Card } from '../../ui'
+import { rootUrl } from '../../api'
 
-export const HomePage = () => (
-  <React.Fragment>
-    <Header />
-    <Card id="1" name="Bulbasaur" price="30" image="https://img.pokemondb.net/artwork/bulbasaur.jpg"
-      type={["grass", "poison"]} species="Seed Pokemon"
-      abilities={[{ naming: "Overgrow", hidden: false }, { naming: "Chlorophyll", hidden: true }]} />
-  </React.Fragment>
-)
+export class HomePage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      cards: []
+    }
+  }
+
+  componentDidMount() {
+    fetch(rootUrl)
+      .then(res => res.json())
+      .then(data => {
+        const cards = data.data.map(e => <Card {...e} key={e.id} />)
+        this.setState({ cards })
+      })
+  }
+
+  render() {
+    return (
+      <Fragment>
+        <Header />
+        <CardsWrapper>
+          {this.state.cards}
+        </CardsWrapper>
+      </Fragment>
+    )
+  }
+}
+
+const CardsWrapper = styled(Container)`
+  display: flex;
+  flex-wrap: wrap;
+`
