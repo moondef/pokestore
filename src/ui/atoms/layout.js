@@ -23,7 +23,7 @@ Layout.propTypes = {
   padding: PropTypes.number,
   width: PropTypes.number,
   justify: PropTypes.oneOf(['center', 'flex-start', 'flex-end', 'space-between', 'space-around']),
-  align: PropTypes.oneOf(['stretch', 'center', 'flex-start', 'flex-end', 'baseline']),
+  align: PropTypes.oneOf(['stretch', 'center', 'flex-start', 'flex-end', 'baseline', 'space-between']),
 }
 
 Layout.defaultProps = {

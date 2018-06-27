@@ -1,33 +1,69 @@
-import React from 'react'
+import React, { Component } from 'react'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
+import { ADD_TO_CART, REMOVE_FROM_CART } from '../../store/actions'
 
 import { Layout, Button } from '../atoms'
 import { color } from '../theme'
 
-export const Card = ({ id, name, price, image, type, species, abilities }) => (
-  <CardWrapper width={15} flow="column" padding={1} align="center" >
-    <Title>{name}</Title>
-    <Image src={image} />
-    <span>Price: {price}$</span>
-    <br />
-    <div>
-      Type: {type.map((e, i) => <Type key={`type-${e}-${i}`}>{e}</Type>)}
-    </div>
-    <br />
-    <span>Species: {species}</span>
-    <br />
+class Card extends Component {
+  state = { count: 0 }
+
+  componentDidMount() {
+    const el = this.props.store.find(e => e.name === this.props.name)
+    if (el) this.setState({ count: el.count })
+  }
+
+  increment = () => {
+    this.setState({ count: this.state.count + 1 })
+  }
+
+  render() {
+
+    return (
+      <CardWrapper width={15} flow="column" padding={1} align="center" >
+        <Title>{this.props.name}</Title>
+        <Image src={this.props.image} />
+        <span>Price: {this.props.price}$</span>
+        <br />
+        <div>
+          Type: {this.props.type.map((e, i) => <Type key={`type-${e}-${i}`}>{e}</Type>)}
+        </div>
+        <br />
+        <span>Species: {this.props.species}</span>
+        <br />
 
 
-    <div>
-      Abilities: <br /> <br /> {abilities.map((e, i) => <Type key={`ability-${e}-${i}`}>{e.naming}</Type>)}
-    </div>
+        <div>
+          Abilities: <br /> <br /> {this.props.abilities.map((e, i) => <Type key={`ability-${e}-${i}`}>{e.naming}</Type>)}
+        </div>
 
-    <Buy>
-      <Button>+</Button>
-    </Buy>
-  </CardWrapper>
-)
+        <Buy>
+          <Button onClick={() => {
+            this.props.addToCart({ name: this.props.name, price: this.props.price })
+            this.increment()
+          }}>+</Button> |
+          <span>{this.state.count}</span>
+        </Buy>
+      </CardWrapper>
+    )
+  }
+}
+
+const mapStateToProps = store => ({
+  store
+})
+
+const mapDispatchToProps = dispatch => ({
+  addToCart: (payload) => dispatch({ type: ADD_TO_CART, payload }),
+  removeFromCart: (pokemon) => dispatch({ type: REMOVE_FROM_CART, pokemon })
+})
+
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Card)
 
 const CardWrapper = styled(Layout)`
   font-size: 0.9rem;
@@ -65,5 +101,8 @@ const Type = styled.span`
 `
 
 const Buy = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin: 1rem;
 `;

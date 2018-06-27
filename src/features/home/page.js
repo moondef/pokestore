@@ -1,6 +1,7 @@
 import React, { Fragment, Component } from 'react'
 import styled from 'styled-components'
-import { Header, Container, Card } from '../../ui'
+import { Header, Container } from '../../ui'
+import Card from '../../ui/organisms/card';
 import { rootUrl } from '../../api'
 
 export class HomePage extends Component {
