@@ -1,3 +1,5 @@
+const css = String.raw
+
 export const color = {
   primary: '#ff6600'
 }
