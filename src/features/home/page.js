@@ -1,10 +1,11 @@
 import React from 'react'
-import { Button } from '../../ui'
-import { Header } from '../../ui'
+import { Header, Button, Card } from '../../ui'
 
 export const HomePage = () => (
   <React.Fragment>
     <Header />
-    <Button>This is a button</Button>
+    <Card id="1" name="Bulbasaur" price="30" image="https://img.pokemondb.net/artwork/bulbasaur.jpg"
+      type={["grass", "poison"]} species="Seed Pokemon"
+      abilities={[{ naming: "Overgrow", hidden: false }, { naming: "Chlorophyll", hidden: true }]} />
   </React.Fragment>
 )
