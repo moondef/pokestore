@@ -30,12 +30,15 @@ export const Card = ({ id, name, price, image, type, species, abilities }) => (
 )
 
 const CardWrapper = styled(Layout)`
-  
   font-size: 0.9rem;
   text-align: center;
   border-radius: 5px;
   border: 2px solid ${color.primary};
   margin: 0.6rem;
+
+  @media screen and (max-width: 485px) {
+    width: 100%;
+  }
 `
 
 const Title = styled.h2`

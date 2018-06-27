@@ -35,4 +35,5 @@ export class HomePage extends Component {
 const CardsWrapper = styled(Container)`
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 `
