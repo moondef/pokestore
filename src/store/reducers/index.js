@@ -18,7 +18,7 @@ const addToCart = (cart, pokemon) => {
   if (inCart(cart, pokemon)) {
     cart.find(item => item.name === pokemon.name).count += 1
   } else {
-    pokemon['count'] = 0
+    pokemon['count'] = 1
     cart.push(pokemon)
   }
 
