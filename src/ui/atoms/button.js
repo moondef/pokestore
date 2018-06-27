@@ -8,7 +8,7 @@ export const Button = styled.button`
   border-radius: 3px;
   border: 1px solid ${color.primary};
   background-color: ${color.primary};
-  color: #fff;
+  color: ${color.background};
 
   outline: none !important;
   overflow: hidden;

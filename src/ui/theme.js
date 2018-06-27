@@ -1,7 +1,8 @@
 const css = String.raw
 
 export const color = {
-  primary: '#ff6600'
+  primary: '#ff6600',
+  background: '#fff'
 }
 
 export const globalStyles = css`

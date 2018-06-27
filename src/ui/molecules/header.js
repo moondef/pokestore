@@ -15,7 +15,7 @@ export const Header = () => (
 
 const HeaderWrapper = styled(Container)`
   align-items: stretch;
-  background-color: white;
+  background-color: ${color.background};
   border-bottom: 1px solid ${color.primary};
   display: flex;
   flex-shrink: 0;
