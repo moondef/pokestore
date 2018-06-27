@@ -13,9 +13,15 @@ class CartPage extends Component {
   componentDidMount() {
     const data = this.props.store.map((e, i) => (
       <CartItem flow="row" justify="center" align="space-between" padding={1} name={e.name} key={`poke-${i}-${e.name}`}>
-        <div>{e.name}</div>
-        <div>{e.price}$</div>
-        <div>{e.count}</div>
+        <ItemName>
+          <span>{e.name}</span>
+        </ItemName>
+        <div>
+          <span>{e.price}$</span>
+        </div>
+        <div>
+          <span>{e.count}</span>
+        </div>
         <Button onClick={() => {
           this.props.removeFromCart(e)
           this.setState({ data: this.state.data.filter(el => el.props.name !== e.name) }, console.log(this.state.data))
@@ -68,4 +74,8 @@ const CartWrapper = styled(Container)`
 
 const CartItem = styled(Layout)`
   align-items: center;
+`
+const ItemName = styled.div`
+  max-width: 100px;
+  width: 100%;
 `
