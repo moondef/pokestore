@@ -18,8 +18,12 @@ class Card extends Component {
     this.setState({ count: this.state.count + 1 })
   }
 
-  render() {
+  handleAddToCart = () => {
+    this.props.addToCart({ name: this.props.name, price: this.props.price })
+    this.increment()
+  }
 
+  render() {
     return (
       <CardWrapper width={15} flow="column" padding={1} align="center" >
         <Title>{this.props.name}</Title>
@@ -39,10 +43,7 @@ class Card extends Component {
         </div>
 
         <Buy>
-          <Button onClick={() => {
-            this.props.addToCart({ name: this.props.name, price: this.props.price })
-            this.increment()
-          }}>+</Button> |
+          <Button onClick={this.handleAddToCart}>+</Button> |
           <span>{this.state.count}</span>
         </Buy>
       </CardWrapper>
