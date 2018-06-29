@@ -20,14 +20,21 @@ class CartPage extends Component {
         <div>
           <span>{e.count}</span>
         </div>
-        <Button onClick={() => {
-          this.props.removeFromCart(e)
-          this.setState({ data: this.state.data.filter(el => el.props.name !== e.name) }, console.log(this.state.data))
-        }}>Remove</Button>
+        <Button onClick={() => this.handleRemoveFromCart(e)}>Remove</Button>
       </CartItem>)
     )
 
     this.setState({ data })
+  }
+
+  handleRemoveFromCart = (pokemon) => {
+    this.props.removeFromCart(pokemon)
+    this.setState({ data: this.state.data.filter(el => el.props.name !== pokemon.name) })
+  }
+
+  handleClearCart = () => {
+    this.props.clearCart()
+    this.setState({ data: [] })
   }
 
   render() {
@@ -35,10 +42,7 @@ class CartPage extends Component {
       <Fragment>
         <Header />
         <CartWrapper>
-          <Button onClick={() => {
-            this.props.clearCart()
-            this.setState({ data: [] })
-          }}>Clear cart</Button>
+          <Button onClick={this.handleClearCart}>Clear cart</Button>
           <Cart>
             {this.state.data}
           </Cart>
