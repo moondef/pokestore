@@ -6,7 +6,7 @@ import { ADD_TO_CART, REMOVE_FROM_CART } from '../../store/actions'
 import { Layout, Button } from '../atoms'
 import { color } from '../theme'
 
-class Card extends Component {
+class CardView extends Component {
   state = { count: 0 }
 
   componentDidMount() {
@@ -60,11 +60,10 @@ const mapDispatchToProps = dispatch => ({
   removeFromCart: (pokemon) => dispatch({ type: REMOVE_FROM_CART, pokemon })
 })
 
-
-export default connect(
+export const Card = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Card)
+)(CardView)
 
 const CardWrapper = styled(Layout)`
   font-size: 0.9rem;
